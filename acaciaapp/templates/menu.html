@@ -1,0 +1,422 @@
+{% extends 'starter-page.html' %}
+{% load static %}
+{% block title %}
+	Our Menu
+{% endblock %}
+
+{% block content %}
+<!-- Menu Section -->
+<section id="menu" class="menu section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Menu</h2>
+    <p>Experience the finest blend of African-inspired dishes and international cuisine at Acacia Resort.</p>
+  </div>
+  <!-- End Section Title -->
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="menu-filters">
+          <ul class="nav nav-pills justify-content-center" id="menuTabs" role="tablist">
+
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="menu-starters-tab" data-bs-toggle="pill" data-bs-target="#menu-starters" type="button" role="tab">
+                <i class="bi bi-egg-fried me-2"></i>Starters
+              </button>
+            </li>
+
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="menu-mains-tab" data-bs-toggle="pill" data-bs-target="#menu-mains" type="button" role="tab">
+                <i class="bi bi-cup-hot me-2"></i>Main Courses
+              </button>
+            </li>
+
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="menu-desserts-tab" data-bs-toggle="pill" data-bs-target="#menu-desserts" type="button" role="tab">
+                <i class="bi bi-cake2 me-2"></i>Desserts
+              </button>
+            </li>
+
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="menu-drinks-tab" data-bs-toggle="pill" data-bs-target="#menu-drinks" type="button" role="tab">
+                <i class="bi bi-cup me-2"></i>Beverages
+              </button>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="menuTabContent">
+
+      <!-- Starters -->
+      <div class="tab-pane fade show active" id="menu-starters" role="tabpanel">
+        <div class="row gy-4" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="col-lg-6">
+            <div class="menu-item">
+              <div class="menu-item-image">
+                <img src="{% static 'assets/img/restaurant/starter-6.webp' %}" class="img-fluid" alt="Starter">
+                <div class="special-badge">Chef's Pick</div>
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h4>Kuku Bites (Crispy Chicken)</h4>
+                  <div class="dietary-tags">
+                    <span class="tag spicy"><i class="bi bi-fire"></i></span>
+                  </div>
+                </div>
+                <p>Crunchy chicken pieces seasoned with Swahili spices, served with a house-made chili dip.</p>
+                <div class="menu-item-footer">
+                  <span class="price">$12</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="menu-item">
+              <div class="menu-item-image">
+                <img src="{% static 'assets/img/restaurant/starter-3.webp' %}" class="img-fluid" alt="Starter">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h4>Vegetable Samosas</h4>
+                  <div class="dietary-tags">
+                    <span class="tag vegetarian"><i class="bi bi-leaf"></i></span>
+                  </div>
+                </div>
+                <p>Golden-fried samosas stuffed with spiced vegetables and served with tamarind sauce.</p>
+                <div class="menu-item-footer">
+                  <span class="price">$8</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="menu-item">
+              <div class="menu-item-image">
+                <img src="{% static 'assets/img/restaurant/starter-5.webp' %}" class="img-fluid" alt="Starter">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h4>Tilapia Fish Fingers</h4>
+                  <div class="dietary-tags">
+                    <span class="tag gluten-free"><i class="bi bi-check-circle"></i></span>
+                  </div>
+                </div>
+                <p>Crispy lake-tilapia strips lightly battered and served with lemon aioli.</p>
+                <div class="menu-item-footer">
+                  <span class="price">$14</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="menu-item">
+              <div class="menu-item-image">
+                <img src="{% static 'assets/img/restaurant/starter-7.webp' %}" class="img-fluid" alt="Starter">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h4>Spiced Beef Skewers</h4>
+                  <div class="dietary-tags">
+                    <span class="tag premium"><i class="bi bi-star-fill"></i></span>
+                  </div>
+                </div>
+                <p>Tender beef cubes marinated in ginger, garlic, and chili, grilled to perfection.</p>
+                <div class="menu-item-footer">
+                  <span class="price">$16</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Main Courses -->
+      <div class="tab-pane fade" id="menu-mains" role="tabpanel">
+        <div class="row gy-4" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="col-lg-6">
+            <div class="menu-item">
+              <div class="menu-item-image">
+                <img src="{% static 'assets/img/restaurant/main-2.webp' %}" class="img-fluid" alt="Main Course">
+                <div class="special-badge">Signature</div>
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h4>Nyama Choma Platter</h4>
+                  <div class="dietary-tags">
+                    <span class="tag premium"><i class="bi bi-star-fill"></i></span>
+                  </div>
+                </div>
+                <p>Traditional Kenyan-style grilled beef served with kachumbari and ugali or fries.</p>
+                <div class="menu-item-footer">
+                  <span class="price">$22</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="menu-item">
+              <div class="menu-item-image">
+                <img src="{% static 'assets/img/restaurant/main-4.webp' %}" class="img-fluid" alt="Main Course">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h4>Pan-Seared Tilapia</h4>
+                  <div class="dietary-tags">
+                    <span class="tag gluten-free"><i class="bi bi-check-circle"></i></span>
+                  </div>
+                </div>
+                <p>Fresh lake tilapia pan-seared and served with coconut curry sauce and steamed rice.</p>
+                <div class="menu-item-footer">
+                  <span class="price">$18</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="menu-item">
+              <div class="menu-item-image">
+                <img src="{% static 'assets/img/restaurant/main-6.webp' %}" class="img-fluid" alt="Main Course">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h4>Chicken Curry (Kuku Curry)</h4>
+                  <div class="dietary-tags">
+                    <span class="tag premium"><i class="bi bi-star-fill"></i></span>
+                  </div>
+                </div>
+                <p>Rich coconut-based curry cooked with tender chicken pieces and Kenyan spices.</p>
+                <div class="menu-item-footer">
+                  <span class="price">$17</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="menu-item">
+              <div class="menu-item-image">
+                <img src="{% static 'assets/img/restaurant/main-8.webp' %}" class="img-fluid" alt="Main Course">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h4>Mushroom Risotto</h4>
+                  <div class="dietary-tags">
+                    <span class="tag vegetarian"><i class="bi bi-leaf"></i></span>
+                  </div>
+                </div>
+                <p>Creamy arborio rice slow-cooked with sautéed mushrooms and fresh herbs.</p>
+                <div class="menu-item-footer">
+                  <span class="price">$19</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Desserts -->
+      <div class="tab-pane fade" id="menu-desserts" role="tabpanel">
+        <div class="row gy-4" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="col-lg-6">
+            <div class="menu-item">
+              <div class="menu-item-image">
+                <img src="{% static 'assets/img/restaurant/dessert-2.webp' %}" class="img-fluid" alt="Dessert">
+                <div class="special-badge">Popular</div>
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h4>Mango Cheesecake</h4>
+                  <div class="dietary-tags">
+                    <span class="tag vegetarian"><i class="bi bi-leaf"></i></span>
+                  </div>
+                </div>
+                <p>A creamy cheesecake infused with fresh Kenyan mangoes and topped with mango glaze.</p>
+                <div class="menu-item-footer">
+                  <span class="price">$10</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="menu-item">
+              <div class="menu-item-image">
+                <img src="{% static 'assets/img/restaurant/dessert-5.webp' %}" class="img-fluid" alt="Dessert">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h4>Coconut Mandazi</h4>
+                  <div class="dietary-tags">
+                    <span class="tag gluten-free"><i class="bi bi-check-circle"></i></span>
+                  </div>
+                </div>
+                <p>Soft Swahili-style mandazi made with coconut milk and lightly dusted with sugar.</p>
+                <div class="menu-item-footer">
+                  <span class="price">$6</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="menu-item">
+              <div class="menu-item-image">
+                <img src="{% static 'assets/img/restaurant/dessert-7.webp' %}" class="img-fluid" alt="Dessert">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h4>Vanilla Ice Cream Sundae</h4>
+                  <div class="dietary-tags">
+                    <span class="tag vegetarian"><i class="bi bi-leaf"></i></span>
+                  </div>
+                </div>
+                <p>Rich vanilla ice cream served with chocolate drizzle and seasonal toppings.</p>
+                <div class="menu-item-footer">
+                  <span class="price">$7</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="menu-item">
+              <div class="menu-item-image">
+                <img src="{% static 'assets/img/restaurant/dessert-9.webp' %}" class="img-fluid" alt="Dessert">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h4>Tropical Fruit Tart</h4>
+                  <div class="dietary-tags">
+                    <span class="tag vegan"><i class="bi bi-flower1"></i></span>
+                  </div>
+                </div>
+                <p>A crispy tart shell filled with custard and topped with pineapple, mango, and passion fruit.</p>
+                <div class="menu-item-footer">
+                  <span class="price">$9</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Beverages -->
+      <div class="tab-pane fade" id="menu-drinks" role="tabpanel">
+        <div class="row gy-4" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="col-lg-6">
+            <div class="menu-item">
+              <div class="menu-item-image">
+                <img src="{% static 'assets/img/restaurant/drink-3.webp' %}" class="img-fluid" alt="Beverage">
+                <div class="special-badge">House Special</div>
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h4>Dawa Cocktail</h4>
+                  <div class="dietary-tags">
+                    <span class="tag spicy"><i class="bi bi-fire"></i></span>
+                  </div>
+                </div>
+                <p>A refreshing Kenyan classic made with honey, lime, ginger, and a splash of vodka.</p>
+                <div class="menu-item-footer">
+                  <span class="price">$9</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="menu-item">
+              <div class="menu-item-image">
+                <img src="{% static 'assets/img/restaurant/drink-6.webp' %}" class="img-fluid" alt="Beverage">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h4>Fresh Tropical Smoothie</h4>
+                  <div class="dietary-tags">
+                    <span class="tag vegan"><i class="bi bi-flower1"></i></span>
+                  </div>
+                </div>
+                <p>A mix of mango, pineapple, banana, and passion fruit blended to creamy perfection.</p>
+                <div class="menu-item-footer">
+                  <span class="price">$6</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="menu-item">
+              <div class="menu-item-image">
+                <img src="{% static 'assets/img/restaurant/drink-8.webp' %}" class="img-fluid" alt="Beverage">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h4>House Wine Selection</h4>
+                  <div class="dietary-tags">
+                    <span class="tag premium"><i class="bi bi-star-fill"></i></span>
+                  </div>
+                </div>
+                <p>Carefully curated red and white wines sourced from award-winning vineyards.</p>
+                <div class="menu-item-footer">
+                  <span class="price">$15 / glass</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="menu-item">
+              <div class="menu-item-image">
+                <img src="{% static 'assets/img/restaurant/drink-10.webp' %}" class="img-fluid" alt="Beverage">
+              </div>
+              <div class="menu-item-content">
+                <div class="menu-item-header">
+                  <h4>Kenyan Artisan Coffee</h4>
+                  <div class="dietary-tags">
+                    <span class="tag vegan"><i class="bi bi-flower1"></i></span>
+                  </div>
+                </div>
+                <p>Locally roasted Kenyan AA coffee brewed to deliver a bold and aromatic cup.</p>
+                <div class="menu-item-footer">
+                  <span class="price">$4</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-12 text-center" data-aos="fade-up" data-aos-delay="300">
+        <a href="#" class="btn btn-download">
+          <i class="bi bi-download me-2"></i>Download Full Menu (PDF)
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+<!-- /Menu Section -->
+{% endblock %}

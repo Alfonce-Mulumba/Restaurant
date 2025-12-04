@@ -1,0 +1,312 @@
+{% extends 'starter-page.html' %}
+{% load static %}
+{% block title %}
+	About Us
+{% endblock %}
+{% block content %}
+
+<section id="about" class="about section">
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row align-items-center">
+      <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
+        <div class="about-image">
+          <img src="{% static 'assets/img/restaurant/chef-3.webp' %}" alt="Executive Chef" class="img-fluid rounded">
+          <div class="experience-badge">
+            <span class="years">25+</span>
+            <span class="text">Years of Culinary Excellence</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
+        <div class="about-content">
+          <div class="section-header">
+            <h2>Meet Our Executive Chef</h2>
+            <p class="subtitle">Bringing world-class flavours to Acacia Resort</p>
+          </div>
+
+          <div class="story-text">
+            <p>At Acacia Resort, our culinary philosophy is deeply rooted in authentic African hospitality and world-inspired creativity. Chef
+            <strong>Emmanuel Karanja</strong> leads our kitchen with a passion for fresh, locally sourced ingredients and refined cooking techniques
+            that highlight Kenya’s rich food heritage.</p>
+
+            <p>With decades of experience in luxury resorts across East Africa, Chef Emmanuel has mastered the art of blending traditional flavours
+            with modern presentation—creating memorable dining experiences for guests from around the world.</p>
+          </div>
+
+          <div class="chef-highlights">
+            <div class="row">
+              <div class="col-6">
+                <div class="highlight-item">
+                  <i class="bi bi-award"></i>
+                  <span>East Africa Culinary Award</span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="highlight-item">
+                  <i class="bi bi-star"></i>
+                  <span>Five-Star Resort Recognition</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="chef-quote">
+            <blockquote>
+              "Food is a universal language—my goal is to tell the story of Kenya’s flavours in every dish we serve."
+            </blockquote>
+            <cite>- Chef Emmanuel Karanja</cite>
+          </div>
+
+          <div class="cta-buttons">
+            <a href="#menu" class="btn btn-primary">View Menu</a>
+            <a href="#book-a-table" class="btn btn-outline">Book a Table</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="restaurant-gallery" data-aos="fade-up" data-aos-delay="400">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="gallery-item">
+            <img src="{% static 'assets/img/restaurant/showcase-2.webp' %}" alt="Restaurant Interior" class="img-fluid rounded">
+            <div class="gallery-caption">
+              <h4>Elegant Dining</h4>
+              <p>A warm and relaxed ambiance, perfect for every occasion</p>
+            </div>
+          </div>
+        </div><!-- End Gallery Item -->
+
+        <div class="col-lg-4 col-md-6">
+          <div class="gallery-item">
+            <img src="{% static 'assets/img/restaurant/main-4.webp' %}" alt="Signature Dish" class="img-fluid rounded">
+            <div class="gallery-caption">
+              <h4>Signature Dishes</h4>
+              <p>Inspired by Kenyan culture and crafted with a modern twist</p>
+            </div>
+          </div>
+        </div><!-- End Gallery Item -->
+
+        <div class="col-lg-4 col-md-6">
+          <div class="gallery-item">
+            <img src="{% static 'assets/img/restaurant/misc-7.webp' %}" alt="Wine Selection" class="img-fluid rounded">
+            <div class="gallery-caption">
+              <h4>Curated Wine</h4>
+              <p>A refined selection of local and international wines</p>
+            </div>
+          </div>
+        </div><!-- End Gallery Item -->
+      </div>
+    </div>
+
+  </div>
+
+</section><!-- /About Section -->
+
+
+        <!-- Testimonials Section -->
+<section id="testimonials" class="testimonials section light-background">
+
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Testimonials</h2>
+    <p>What our guests say about their experience at Acacia Resort</p>
+  </div>
+
+  <div class="container">
+
+    <div class="testimonial-grid">
+
+      <div class="testimonial-item" data-aos="zoom-in" data-aos-delay="100">
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-image">
+              <img src="{% static 'assets/img/person/person-f-5.webp' %}" class="img-fluid" alt="Testimonial 1">
+            </div>
+            <div class="testimonial-meta">
+              <h3>Grace Wanjiku</h3>
+              <h4>Event Planner</h4>
+              <div class="company-logo">
+                <i class="bi bi-building"></i>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-body">
+            <i class="bi bi-chat-quote-fill quote-icon"></i>
+            <p>The service and ambiance at Acacia Resort are unmatched. Every detail is thoughtful, and the food is consistently outstanding.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-item featured" data-aos="zoom-in" data-aos-delay="200">
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-image">
+              <img src="{% static 'assets/img/person/person-m-5.webp' %}" class="img-fluid" alt="Testimonial 2">
+            </div>
+            <div class="testimonial-meta">
+              <h3>Daniel Otieno</h3>
+              <h4>Entrepreneur</h4>
+              <div class="company-logo">
+                <i class="bi bi-buildings"></i>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-body">
+            <i class="bi bi-chat-quote-fill quote-icon"></i>
+            <p>A perfect getaway. The food, the staff, and the atmosphere create a truly luxurious experience. Highly recommended.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-item" data-aos="zoom-in" data-aos-delay="300">
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-image">
+              <img src="{% static 'assets/img/person/person-f-6.webp' %}" class="img-fluid" alt="Testimonial 3">
+            </div>
+            <div class="testimonial-meta">
+              <h3>Linda Achieng</h3>
+              <h4>Travel Consultant</h4>
+              <div class="company-logo">
+                <i class="bi bi-building-check"></i>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-body">
+            <i class="bi bi-chat-quote-fill quote-icon"></i>
+            <p>Their attention to quality is exceptional. From the meals to the service, everything feels premium and welcoming.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-item" data-aos="zoom-in" data-aos-delay="400">
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-image">
+              <img src="{% static 'assets/img/person/person-m-6.webp' %}" class="img-fluid" alt="Testimonial 4">
+            </div>
+            <div class="testimonial-meta">
+              <h3>Brian Mwangi</h3>
+              <h4>Software Engineer</h4>
+              <div class="company-logo">
+                <i class="bi bi-building-gear"></i>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-body">
+            <i class="bi bi-chat-quote-fill quote-icon"></i>
+            <p>An amazing dining experience. The signature dishes are a must-try, and the staff make you feel at home.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+        <!-- Location Section -->
+<section id="location" class="location section">
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row gy-5">
+      <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+        <div class="location-content">
+          <div class="content-header">
+            <h2>Visit Acacia Resort</h2>
+            <p class="subtitle">A serene escape located in the heart of Kenya</p>
+          </div>
+
+          <!-- MAP UNCHANGED -->
+          <div class="map-wrapper">
+            <iframe ...></iframe>
+            <div class="map-overlay">
+              <div class="location-badge">
+                <i class="bi bi-geo-alt"></i>
+                <span>We're Here</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="transportation-info" data-aos="fade-up" data-aos-delay="300">
+            <h4>Transportation &amp; Parking</h4>
+            <div class="transport-grid">
+              <div class="transport-item">
+                <i class="bi bi-train-front"></i>
+                <div class="details">
+                  <strong>Public Transport</strong>
+                  <p>Easily accessible via local matatus and regional shuttles</p>
+                </div>
+              </div>
+              <div class="transport-item">
+                <i class="bi bi-p-square"></i>
+                <div class="details">
+                  <strong>Secure Parking</strong>
+                  <p>Ample on-site parking available for all guests</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="250">
+        <div class="contact-sidebar">
+          <div class="contact-card">
+            <div class="card-icon">
+              <i class="bi bi-building"></i>
+            </div>
+            <h3>Address</h3>
+            <p>Acacia Resort<br>Nairobi, Kenya</p>
+          </div>
+
+          <div class="contact-card" data-aos="fade-up" data-aos-delay="350">
+            <div class="card-icon">
+              <i class="bi bi-telephone-fill"></i>
+            </div>
+            <h3>Reservations</h3>
+            <p class="phone">+254 700 000 000</p>
+            <p class="note">We recommend booking 24–48 hours in advance</p>
+          </div>
+
+          <div class="contact-card" data-aos="fade-up" data-aos-delay="450">
+            <div class="card-icon">
+              <i class="bi bi-clock-fill"></i>
+            </div>
+            <h3>Operating Hours</h3>
+            <div class="hours-list">
+              <div class="hour-item">
+                <span class="day">Monday - Friday</span>
+                <span class="time">8:00 AM - 10:00 PM</span>
+              </div>
+              <div class="hour-item">
+                <span class="day">Saturday</span>
+                <span class="time">9:00 AM - 11:00 PM</span>
+              </div>
+              <div class="hour-item">
+                <span class="day">Sunday</span>
+                <span class="time">9:00 AM - 9:00 PM</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="action-buttons" data-aos="fade-up" data-aos-delay="550">
+            <a href="/reservation/" class="btn-primary">Book a Table</a>
+            <a href="#" class="btn-secondary">Get Directions</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+    </section><!-- /Location Section -->
+{% endblock %}

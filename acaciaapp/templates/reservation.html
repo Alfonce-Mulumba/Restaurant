@@ -1,0 +1,147 @@
+{% extends 'starter-page.html' %}
+
+{% load static %}
+
+{% block title %} Reservations - Acacia {% endblock %}
+
+{% block content %}
+
+     {% for message in messages %}
+        <p class="alert alert-success w-100 text-center m-auto">{{ message }}</p>
+
+    {% endfor %}
+    <!-- Book A Table Section -->
+    <section id="book-a-table" class="book-a-table section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row g-0">
+          <div class="col-lg-6 reservation-form-col" data-aos="fade-right" data-aos-delay="200">
+            <div class="reservation-form-container">
+              <div class="form-header content">
+                <span class="subtitle" style="color:#1e40af;">Make a Reservation</span>
+                <h3 style="color:#1e40af;">Reserve Your Table Today</h3>
+                <p>Enjoy a warm and inviting dining experience at Acacia Resort. Whether you're celebrating a special occasion or enjoying a casual meal, we ensure a smooth and elegant reservation process for you and your guests.</p>
+              </div>
+
+              <form method="post" action="{% url 'reservation' %}" role="form">
+                {% csrf_token %}
+                <div class="row g-3">
+                  <div class="col-12 form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" required="">
+                  </div>
+                  <div class="col-12 form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="text" id="phone" class="form-control" name="phone" placeholder="Your Phone" required="">
+                  </div>
+                  <div class="col-12 form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" name="email" placeholder="Your Email" required="">
+                  </div>
+                  <div class="col-12 form-group">
+                    <label for="people">Number of People</label>
+                    <select name="people" id="people" class="form-select" required="">
+                      <option value="">Select guests</option>
+                      <option value="1">1 Person</option>
+                      <option value="2">2 People</option>
+                      <option value="3">3 People</option>
+                      <option value="4">4 People</option>
+                      <option value="5">5 People</option>
+                      <option value="6">6+ People</option>
+                    </select>
+                  </div>
+                  <div class="col-12 form-group">
+                    <label for="date">Reservation Date</label>
+                    <input type="date" id="date" name="date" class="form-control" required="">
+                  </div>
+                  <div class="col-12 form-group">
+                    <label for="time">Reservation Time</label>
+                    <input type="time" id="time" class="form-control" name="time" required="">
+                  </div>
+
+                  <div class="col-12 form-group">
+                    <label for="message">Special Requests</label>
+                    <textarea id="message" class="form-control" name="message" rows="2" placeholder="Allergies, special occasions, seating preferences"></textarea>
+                  </div>
+                </div>
+
+
+                <div class="text-center">
+                  <button type="submit" class="btn-book-table" style="background-color:#1e40af; border-color:#1e40af;">
+                    Confirm Reservation
+                  </button>
+
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="col-lg-6 info-col" data-aos="fade-left" data-aos-delay="300">
+            <div class="restaurant-info">
+              <div class="info-image">
+                <img src="{% static 'assets/img/restaurant/showcase-4.webp' %}" alt="Restaurant interior" class="img-fluid">
+              </div>
+
+              <div class="info-content content">
+                <div class="restaurant-contact">
+                  <h4 style="color:#1e40af;">Restaurant Information</h4>
+
+                  <div class="info-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-box">
+                      <i class="bi bi-clock" style="color:#1e40af;"></i>
+                    </div>
+                    <div class="info-text">
+                      <h5>Opening Hours</h5>
+                      <p>Mon - Fri: 11:00 AM - 11:00 PM<br>
+                        Sat - Sun: 10:00 AM - 12:00 AM</p>
+                    </div>
+                  </div>
+
+                  <div class="info-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box">
+                      <i class="bi bi-geo-alt" style="color:#1e40af;"></i>
+                    </div>
+                    <div class="info-text">
+                      <h5>Our Location</h5>
+                      <p>Acacia Resort, Riverside Drive<br>Nairobi, Kenya</p>
+                    </div>
+                  </div>
+
+                  <div class="info-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon-box">
+                      <i class="bi bi-telephone" style="color:#1e40af;"></i>
+                    </div>
+                    <div class="info-text">
+                      <h5>Reservations</h5>
+                      <p>+254 712 345 678</p>
+                    </div>
+                  </div>
+
+                  <div class="info-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="icon-box">
+                      <i class="bi bi-envelope" style="color:#1e40af;"></i>
+                    </div>
+                    <div class="info-text">
+                      <h5>Email Us</h5>
+                      <p>reservations@acaciaresort.com</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="reservation-cta" data-aos="fade-up" data-aos-delay="500">
+                  <h5>Prefer to call?</h5>
+                  <a href="tel:+254712345678" class="phone-button" style="background-color:#1e40af; border-color:#1e40af;">
+                    <i class="bi bi-telephone-fill"></i>
+                    Call for Reservations
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Book A Table Section -->
+
+{% endblock %}

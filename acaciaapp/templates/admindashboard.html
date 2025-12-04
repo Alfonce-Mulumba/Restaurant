@@ -1,0 +1,160 @@
+{% extends "starter-page.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1>Admin Dashboard</h1>
+
+    <!-- Display success/error messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- Tabs -->
+    <ul class="nav nav-tabs mb-4" id="adminTabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="rooms-tab" data-bs-toggle="tab" href="#rooms" role="tab">Rooms</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="bookings-tab" data-bs-toggle="tab" href="#bookings" role="tab">Room Bookings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="reservations-tab" data-bs-toggle="tab" href="#reservations" role="tab">Table Reservations</a>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="adminTabContent">
+      <!-- Rooms Tab -->
+      <div class="tab-pane fade show active" id="rooms" role="tabpanel">
+          <h3>Add Room</h3>
+          <form method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <input type="hidden" name="create_room">
+              <div class="row">
+                  <div class="col-md-2"><input class="form-control mb-2" name="room_number" placeholder="Room #" required></div>
+                  <div class="col-md-2"><input class="form-control mb-2" name="capacity" placeholder="Capacity" type="number" required></div>
+                  <div class="col-md-2"><input class="form-control mb-2" name="price" placeholder="Price (KES)" type="number" step="0.01" required></div>
+                  <div class="col-md-4"><input class="form-control mb-2" name="description" placeholder="Description" required></div>
+                  <div class="col-md-2"><input class="form-control mb-2" name="image" type="file" required></div>
+              </div>
+              <button class="btn btn-success mb-4" type="submit">Add Room</button>
+          </form>
+
+          <h3>All Rooms</h3>
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th>Room #</th>
+                      <th>Capacity</th>
+                      <th>Price (KES)</th>
+                      <th>Description</th>
+                      <th>Occupied</th>
+                      <th>Actions</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for room in rooms %}
+                  <tr>
+                      <td>{{ room.room_number }}</td>
+                      <td>{{ room.capacity }}</td>
+                      <td>{{ room.price }}</td>
+                      <td>{{ room.description }}</td>
+                      <td>{{ room.is_occupied|yesno:"Yes,No" }}</td>
+                      <td>
+                          <form method="POST" style="display:inline;">
+                              {% csrf_token %}
+                              <input type="hidden" name="toggle_room" value="1">
+                              <input type="hidden" name="room_id" value="{{ room.id }}">
+                              <button class="btn btn-warning btn-sm" type="submit">
+                                  {% if room.is_occupied %}Mark Vacant{% else %}Mark Occupied{% endif %}
+                              </button>
+                          </form>
+                      </td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+      </div>
+
+      <!-- Room Bookings Tab -->
+      <div class="tab-pane fade" id="bookings" role="tabpanel">
+          <h3>Room Bookings</h3>
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th>Name</th>
+                      <th>Room #</th>
+                      <th>Check-In</th>
+                      <th>Check-Out</th>
+                      <th>Cleared</th>
+                      <th>Actions</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for booking in room_bookings %}
+                  <tr>
+                      <td>{{ booking.name }}</td>
+                      <td>{{ booking.room.room_number }}</td>
+                      <td>{{ booking.check_in }}</td>
+                      <td>{{ booking.check_out }}</td>
+                      <td>{{ booking.is_cleared|yesno:"Yes,No" }}</td>
+                      <td>
+                          {% if not booking.is_cleared %}
+                          <form method="POST" style="display:inline;">
+                              {% csrf_token %}
+                              <input type="hidden" name="clear_booking" value="1">
+                              <input type="hidden" name="booking_id" value="{{ booking.id }}">
+                              <button class="btn btn-danger btn-sm" type="submit">Clear</button>
+                          </form>
+                          {% endif %}
+                      </td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+      </div>
+
+      <!-- Table Reservations Tab -->
+      <div class="tab-pane fade" id="reservations" role="tabpanel">
+          <h3>Table Reservations</h3>
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th>Name</th>
+                      <th>People</th>
+                      <th>Date</th>
+                      <th>Time</th>
+                      <th>Message</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for res in table_reservations %}
+                  <tr>
+                      <td>{{ res.name }}</td>
+                      <td>{{ res.people }}</td>
+                      <td>{{ res.date }}</td>
+                      <td>{{ res.time }}</td>
+                      <td>{{ res.message }}</td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+      </div>
+    </div>
+</div>
+
+<script>
+    var triggerTabList = [].slice.call(document.querySelectorAll('#adminTabs a'))
+    triggerTabList.forEach(function (triggerEl) {
+        var tabTrigger = new bootstrap.Tab(triggerEl)
+        triggerEl.addEventListener('click', function (event) {
+            event.preventDefault()
+            tabTrigger.show()
+        })
+    })
+</script>
+{% endblock %}

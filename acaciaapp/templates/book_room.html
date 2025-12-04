@@ -1,0 +1,50 @@
+{% extends "starter-page.html" %}
+{% block title %}Book Room{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Book Room {{ room.room_number }}</h2>
+
+    <form method="POST" class="row g-3">
+        {% csrf_token %}
+        <div class="col-md-6">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-control" name="customer_name" required>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" required>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Phone</label>
+            <input type="text" class="form-control" name="phone" required>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Age</label>
+            <input type="number" class="form-control" name="age" required>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">ID Number</label>
+            <input type="text" class="form-control" name="id_number" required>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Number of People</label>
+            <input type="number" class="form-control" name="people" required>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Check-In Date</label>
+            <input type="date" class="form-control" name="check_in" required>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Check-Out Date</label>
+            <input type="date" class="form-control" name="check_out" required>
+        </div>
+        <div class="col-12">
+            <label class="form-label">Message (Optional)</label>
+            <textarea class="form-control" name="message" rows="3"></textarea>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-success">Book Room</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

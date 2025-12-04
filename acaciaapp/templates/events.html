@@ -1,0 +1,266 @@
+{% extends 'starter-page.html' %}
+{% load static %}
+{% block title %}
+	About Us
+{% endblock %}
+{% block content %}
+
+
+
+<!-- Events Section -->
+<section id="events" class="events section">
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row align-items-center mb-5">
+      <div class="col-lg-6" data-aos="fade-right" data-aos-delay="150">
+        <div class="event-hero-content">
+          <h2>Exceptional Events & Private Dining</h2>
+          <p>Acacia Resort offers a refined event space designed for weddings, corporate meetings, birthday celebrations, and private dining. Our team ensures seamless planning and a memorable experience for you and your guests.</p>
+
+          <div class="event-stats">
+            <div class="stat-item">
+              <span class="stat-number">300+</span>
+              <span class="stat-label">Events Hosted</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">150</span>
+              <span class="stat-label">Max Capacity</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+        <div class="event-hero-image">
+          <img src="{% static 'assets/img/restaurant/event-2.webp' %}" alt="Event Space" class="img-fluid">
+          <div class="floating-card" data-aos="zoom-in" data-aos-delay="300">
+            <i class="bi bi-calendar-check"></i>
+            <span>Book Your Event Today</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-packages" data-aos="fade-up" data-aos-delay="200">
+      <div class="section-header text-center mb-5">
+        <h3>Choose Your Perfect Package</h3>
+        <p>Select an event package tailored to your needs — from intimate dinners to large gatherings hosted at Acacia Resort.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Premium Package -->
+        <div class="col-lg-4 col-md-6" data-aos="flip-up" data-aos-delay="250">
+          <div class="package-card premium">
+            <div class="package-header">
+              <div class="package-icon">
+                <i class="bi bi-gem"></i>
+              </div>
+              <h4>Premium Package</h4>
+              <div class="package-price">
+                <span class="price">$129</span>
+                <span class="per">per person</span>
+              </div>
+            </div>
+            <div class="package-features">
+              <ul>
+                <li><i class="bi bi-check-circle"></i> 5-course gourmet menu</li>
+                <li><i class="bi bi-check-circle"></i> Premium wine selection</li>
+                <li><i class="bi bi-check-circle"></i> Dedicated event coordinator</li>
+                <li><i class="bi bi-check-circle"></i> Custom table arrangements</li>
+                <li><i class="bi bi-check-circle"></i> Professional photography</li>
+              </ul>
+            </div>
+            <div class="package-capacity">30–80 guests</div>
+          </div>
+        </div>
+
+        <!-- Standard Package -->
+        <div class="col-lg-4 col-md-6" data-aos="flip-up" data-aos-delay="300">
+          <div class="package-card standard featured">
+            <div class="popular-badge">Most Popular</div>
+            <div class="package-header">
+              <div class="package-icon">
+                <i class="bi bi-star"></i>
+              </div>
+              <h4>Standard Package</h4>
+              <div class="package-price">
+                <span class="price">$89</span>
+                <span class="per">per person</span>
+              </div>
+            </div>
+            <div class="package-features">
+              <ul>
+                <li><i class="bi bi-check-circle"></i> 3-course dinner menu</li>
+                <li><i class="bi bi-check-circle"></i> Welcome cocktail hour</li>
+                <li><i class="bi bi-check-circle"></i> Event planning assistance</li>
+                <li><i class="bi bi-check-circle"></i> Audio/visual equipment</li>
+                <li><i class="bi bi-check-circle"></i> Complimentary parking</li>
+              </ul>
+            </div>
+            <div class="package-capacity">20–120 guests</div>
+          </div>
+        </div>
+
+        <!-- Essentials Package -->
+        <div class="col-lg-4 col-md-6" data-aos="flip-up" data-aos-delay="350">
+          <div class="package-card essentials">
+            <div class="package-header">
+              <div class="package-icon">
+                <i class="bi bi-heart"></i>
+              </div>
+              <h4>Essentials Package</h4>
+              <div class="package-price">
+                <span class="price">$59</span>
+                <span class="per">per person</span>
+              </div>
+            </div>
+            <div class="package-features">
+              <ul>
+                <li><i class="bi bi-check-circle"></i> Buffet-style dinner</li>
+                <li><i class="bi bi-check-circle"></i> House wine & beer</li>
+                <li><i class="bi bi-check-circle"></i> Basic decorations</li>
+                <li><i class="bi bi-check-circle"></i> Standard seating</li>
+                <li><i class="bi bi-check-circle"></i> 4-hour venue rental</li>
+              </ul>
+            </div>
+            <div class="package-capacity">15–60 guests</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Event Gallery -->
+    <div class="event-gallery-grid" data-aos="fade-up" data-aos-delay="200">
+      <div class="row g-3">
+        <div class="col-lg-3 col-md-6">
+          <div class="gallery-item" data-aos="zoom-out" data-aos-delay="250">
+            <img src="{% static 'assets/img/restaurant/event-4.webp' %}" alt="Corporate Event" class="img-fluid">
+            <div class="gallery-overlay">
+              <span class="gallery-label">Corporate Events</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="gallery-item main-gallery" data-aos="zoom-out" data-aos-delay="300">
+            <img src="{% static 'assets/img/restaurant/event-6.webp' %}" alt="Wedding Reception" class="img-fluid">
+            <div class="gallery-overlay">
+              <span class="gallery-label">Wedding Receptions</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="gallery-item" data-aos="zoom-out" data-aos-delay="350">
+            <img src="{% static 'assets/img/restaurant/event-9.webp' %}" alt="Birthday Party" class="img-fluid">
+            <div class="gallery-overlay">
+              <span class="gallery-label">Birthday Parties</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Booking Section -->
+    <div class="booking-section" data-aos="fade-up" data-aos-delay="200">
+      <div class="row">
+        <div class="col-lg-6" data-aos="slide-right" data-aos-delay="250">
+          <div class="booking-info">
+            <h3>Plan Your Next Event</h3>
+            <p>Our event specialists are ready to help you organize unforgettable celebrations at Acacia Resort — from intimate gatherings to large receptions.</p>
+
+            <div class="contact-methods">
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="bi bi-telephone"></i>
+                </div>
+                <div class="contact-details">
+                  <span class="contact-label">Call Us</span>
+                  <span class="contact-value">+254 712 345 678</span>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="bi bi-envelope"></i>
+                </div>
+                <div class="contact-details">
+                  <span class="contact-label">Email</span>
+                  <span class="contact-value">events@acaciaresort.co.ke</span>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="bi bi-clock"></i>
+                </div>
+                <div class="contact-details">
+                  <span class="contact-label">Planning Hours</span>
+                  <span class="contact-value">Mon–Fri, 9 AM – 6 PM</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Booking Form -->
+        <div class="col-lg-6" data-aos="slide-left" data-aos-delay="300">
+          <div class="quick-booking-form">
+            <form action="forms/event-booking.php" method="post" class="php-email-form">
+              <h4>Quick Event Inquiry</h4>
+              <div class="row">
+                <div class="col-md-6">
+                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                </div>
+                <div class="col-md-6">
+                  <input type="email" name="email" class="form-control" placeholder="Your Email" required="">
+                </div>
+                <div class="col-md-6">
+                  <input type="tel" name="phone" class="form-control" placeholder="Phone Number" required="">
+                </div>
+                <div class="col-md-6">
+                  <input type="date" name="date" class="form-control" required="">
+                </div>
+                <div class="col-md-6">
+                  <select name="guest_count" class="form-select" required="">
+                    <option value="">Guest Count</option>
+                    <option value="15-30">15–30 guests</option>
+                    <option value="31-60">31–60 guests</option>
+                    <option value="61-100">61–100 guests</option>
+                    <option value="100+">100+ guests</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <select name="event_type" class="form-select" required="">
+                    <option value="">Event Type</option>
+                    <option value="wedding">Wedding</option>
+                    <option value="corporate">Corporate Event</option>
+                    <option value="birthday">Birthday Party</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <textarea name="message" rows="5" class="form-control" placeholder="Tell us about your event..."></textarea>
+                </div>
+                <div class="col-12">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your inquiry has been sent. We'll get back to you soon!</div>
+                  <button type="submit" class="btn-submit">Send Inquiry</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</section>
+<!-- /Events Section -->
+
+
+{% endblock %}

@@ -1,0 +1,138 @@
+{% extends 'starter-page.html' %}
+{% load static %}
+
+{% block title %} Register - Acacia {% endblock %}
+
+{% block content %}
+<section class="auth-section">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row justify-content-center">
+      <div class="col-lg-5 col-md-7">
+        <div class="auth-card p-4 shadow-sm rounded-4" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="text-center mb-3" style="color:#1e40af;">Create Your Account</h3>
+          <p class="text-center mb-4 text-muted">Join Acacia Resort to manage your reservations easily.</p>
+
+          <!-- Registration Form -->
+          <form method="post" action="" class="form">
+            {% csrf_token %}
+
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input type="text" name="username" id="username" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Email Address</label>
+              <input type="email" name="email" id="email" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" name="password" id="password" class="form-control" required>
+            </div>
+
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary w-100" style="background-color:#1e40af; border-color:#1e40af;">
+                Register
+              </button>
+            </div>
+          </form>
+
+          <p class="mt-3 text-center text-muted">
+            Already have an account?
+            <a href="{% url 'login' %}" style="color:#1e40af;">Login here</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Success Modal -->
+{% if messages %}
+<div id="successModal" class="modal-overlay">
+  <div class="modal-box">
+    {% for message in messages %}
+      <p class="modal-message">{{ message }}</p>
+    {% endfor %}
+    <button id="proceedBtn" class="modal-btn">OK, Proceed</button>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("successModal");
+    const btn = document.getElementById("proceedBtn");
+
+    modal.style.display = "flex";
+
+    btn.onclick = () => {
+      window.location.href = "{% url 'login' %}";
+    };
+  });
+</script>
+{% endif %}
+
+<style>
+.auth-section {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.auth-card input {
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 10px 12px;
+}
+
+/* Modal Styling */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.55);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+.modal-box {
+  background: #fff;
+  padding: 25px;
+  width: 90%;
+  max-width: 420px;
+  border-radius: 12px;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-message {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.modal-btn {
+  background-color: #1e40af;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.modal-btn:hover {
+  background-color: #1e3a8a;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+</style>
+
+{% endblock %}

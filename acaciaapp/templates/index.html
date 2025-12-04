@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>HomePage - Acacia</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  {% load static %}
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/favicon.png' %}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Bitter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+
+</head>
+
+<body class="index-page m-2">
+
+<header id="header" class="header d-flex align-items-center sticky-top ms-0">
+  <div class="container position-relative d-flex align-items-center justify-content-between">
+
+    <a href="#gallery" class="logo d-flex align-items-center me-auto me-xl-0">
+                <img src="{% static 'assets/img/img.png' %}" alt="" class="img ms-0 border-0 rounded-circle h-100">
+
+      <h1 class="sitename"><strong>Acacia</strong><span class="text-primary"> Resort</span></h1>
+    </a>
+
+  <nav id="navmenu" class="navmenu">
+  <ul class="d-flex align-items-center gap-3 list-unstyled mb-0">
+    <li><a href="/">Home</a></li>
+    <li><a href="/menu/">Menu</a></li>
+    <li><a href="/events/">Events</a></li>
+    <li><a href="/rooms/">Rooms</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+<li class="dropdown">
+    <a href="#"><span>More</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+                {% if user.is_authenticated %}
+              <li><a href="{% url 'profile' %}">Profile</a></li>
+              <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+              <li><a href="{% url 'login' %}">Login</a></li>
+              <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+          </li>
+  </ul>
+
+  <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+</nav>
+
+
+
+<a href="{% if user.is_authenticated %}{% url 'reservation' %}{% else %}{% url 'login' %}?next={% url 'reservation' %}{% endif %}" class="btn-getstarted">
+    Book a Table
+</a>
+
+  </div>
+</header>
+
+
+  <main class="main">
+
+<section id="hero" class="hero section light-background">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="hero-content">
+      <div class="row align-items-center">
+
+        <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
+          <div class="content">
+            <h1 class="hero-title mb-4">Experience Authentic Kenyan & Continental Cuisine</h1>
+            <p class="hero-subtitle mb-4">
+              Welcome to Acacia Resort — a serene dining destination in the heart of Wote Town, Makueni.
+              Enjoy freshly prepared meals inspired by Kenyan traditions and modern continental flavors, served
+              in a relaxing, family-friendly atmosphere.
+            </p>
+
+            <div class="hero-actions d-flex flex-wrap gap-3 mb-4">
+                <a href="{% if user.is_authenticated %}{% url 'reservation' %}{% else %}{% url 'login' %}?next={% url 'reservation' %}{% endif %}" class="btn btn-primary">Book a Table</a>
+
+              <a href="#menu" class="btn btn-outline">View Menu</a>
+            </div>
+
+            <div class="hero-info d-flex flex-wrap align-items-center gap-4">
+              <div class="info-item d-flex align-items-center">
+                <i class="bi bi-clock me-2"></i>
+                <div>
+                  <small class="text-muted">Open Daily</small>
+                  <div class="fw-medium">8:00 AM – 10:00 PM</div>
+                </div>
+              </div>
+
+              <div class="info-item d-flex align-items-center">
+                <i class="bi bi-geo-alt me-2"></i>
+                <div>
+                  <small class="text-muted">Location</small>
+                  <div class="fw-medium">Wote Town, Makueni County</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
+          <div class="hero-images">
+            <div class="main-image">
+              <img src="{% static 'assets/img/restaurant/showcase-2.webp' %}" alt="Acacia Resort Signature Dish" class="img-fluid">
+            </div>
+            <div class="floating-images">
+              <div class="floating-image floating-image-1">
+                <img src="{% static 'assets/img/restaurant/main-4.webp' %}" alt="Grilled Specialties" class="img-fluid">
+              </div>
+              <div class="floating-image floating-image-2">
+                <img src="{% static 'assets/img/restaurant/main-2.webp' %}" alt="Homemade Dessert" class="img-fluid">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+          <!-- Gallery Section -->
+    <section id="gallery" class="gallery section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Gallery</h2>
+    <p>Explore moments from our dining experiences, events, and signature dishes at Acacia Resort.</p>      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+          <ul class="gallery-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+            <li data-filter="*" class="filter-active">All</li>
+            <li data-filter=".filter-food">Food</li>
+            <li data-filter=".filter-interior">Interior</li>
+            <li data-filter=".filter-events">Events</li>
+            <li data-filter=".filter-staff">Staff</li>
+          </ul><!-- End Gallery Filters -->
+
+          <div class="row g-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+            <!-- Food Images -->
+            <div class="col-lg-4 col-md-6 gallery-item isotope-item filter-food">
+              <div class="gallery-wrap">
+                <img src="{% static 'assets/img/restaurant/starter-3.webp' %}" class="img-fluid" alt="Appetizer Platter" loading="lazy">
+                <div class="gallery-info">
+                  <h4>Gourmet Appetizer Selection</h4>
+                  <p>Seasonal ingredients with artisan bread</p>
+                  <div class="gallery-links">
+                    <a href="{% static 'assets/img/restaurant/starter-3.webp' %}" class="glightbox" title="Gourmet Appetizer Selection"><i class="bi bi-zoom-in"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Gallery Item -->
+
+            <div class="col-lg-4 col-md-6 gallery-item isotope-item filter-interior">
+              <div class="gallery-wrap">
+                <img src="{% static 'assets/img/restaurant/showcase-5.webp' %}" class="img-fluid" alt="Restaurant Interior" loading="lazy">
+                <div class="gallery-info">
+                  <h4>Main Dining Area</h4>
+                  <p>Elegant atmosphere with natural lighting</p>
+                  <div class="gallery-links">
+                    <a href="{% static 'assets/img/restaurant/showcase-5.webp' %}" class="glightbox" title="Main Dining Area"><i class="bi bi-zoom-in"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Gallery Item -->
+
+            <div class="col-lg-4 col-md-6 gallery-item isotope-item filter-food">
+              <div class="gallery-wrap">
+                <img src="{% static 'assets/img/restaurant/main-7.webp' %}" class="img-fluid" alt="Main Course" loading="lazy">
+                <div class="gallery-info">
+                  <h4>Signature Main Course</h4>
+                  <p>Chef's special with seasonal vegetables</p>
+                  <div class="gallery-links">
+                    <a href="{% static 'assets/img/restaurant/main-7.webp' %}" class="glightbox" title="Signature Main Course"><i class="bi bi-zoom-in"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Gallery Item -->
+
+            <div class="col-lg-4 col-md-6 gallery-item isotope-item filter-events">
+              <div class="gallery-wrap">
+                <img src="{% static 'assets/img/restaurant/event-4.webp' %}" class="img-fluid" alt="Special Event" loading="lazy">
+                <div class="gallery-info">
+                  <h4>Wine Tasting Evening</h4>
+                  <p>Monthly culinary experience with paired wines</p>
+                  <div class="gallery-links">
+                    <a href="{% static 'assets/img/restaurant/event-4.webp' %}" class="glightbox" title="Wine Tasting Evening"><i class="bi bi-zoom-in"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Gallery Item -->
+
+            <div class="col-lg-4 col-md-6 gallery-item isotope-item filter-staff">
+              <div class="gallery-wrap">
+                <img src="{% static 'assets/img/restaurant/chef-6.webp' %}" class="img-fluid" alt="Chef Portrait" loading="lazy">
+                <div class="gallery-info">
+                  <h4>Executive Chef</h4>
+                  <p>Creating culinary masterpieces since 2010</p>
+                  <div class="gallery-links">
+                    <a href="{% static 'assets/img/restaurant/chef-6.webp' %}" class="glightbox" title="Executive Chef"><i class="bi bi-zoom-in"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Gallery Item -->
+
+            <div class="col-lg-4 col-md-6 gallery-item isotope-item filter-interior">
+              <div class="gallery-wrap">
+                <img src="{% static 'assets/img/restaurant/showcase-2.webp' %}" class="img-fluid" alt="Private Dining Room" loading="lazy">
+                <div class="gallery-info">
+                  <h4>Private Dining Space</h4>
+                  <p>Intimate setting for special occasions</p>
+                  <div class="gallery-links">
+                    <a href="{% static 'assets/img/restaurant/showcase-2.webp' %}" class="glightbox" title="Private Dining Space"><i class="bi bi-zoom-in"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Gallery Item -->
+
+            <div class="col-lg-4 col-md-6 gallery-item isotope-item filter-food">
+              <div class="gallery-wrap">
+                <img src="{% static 'assets/img/restaurant/dessert-5.webp' %}" class="img-fluid" alt="Dessert Display" loading="lazy">
+                <div class="gallery-info">
+                  <h4>Artisanal Dessert Plate</h4>
+                  <p>Handcrafted sweet delicacies</p>
+                  <div class="gallery-links">
+                    <a href="{% static 'assets/img/restaurant/dessert-5.webp' %}" class="glightbox" title="Artisanal Dessert Plate"><i class="bi bi-zoom-in"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Gallery Item -->
+
+            <div class="col-lg-4 col-md-6 gallery-item isotope-item filter-events">
+              <div class="gallery-wrap">
+                <img src="{% static 'assets/img/restaurant/event-8.webp' %}" class="img-fluid" alt="Celebration Event" loading="lazy">
+                <div class="gallery-info">
+                  <h4>Anniversary Celebration</h4>
+                  <p>Custom events tailored to your special moments</p>
+                  <div class="gallery-links">
+                    <a href="{% static 'assets/img/restaurant/event-8.webp' %}" class="glightbox" title="Anniversary Celebration"><i class="bi bi-zoom-in"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Gallery Item -->
+
+            <div class="col-lg-4 col-md-6 gallery-item isotope-item filter-staff">
+              <div class="gallery-wrap">
+                <img src="{% static 'assets/img/restaurant/chef-3.webp' %}" class="img-fluid" alt="Service Staff" loading="lazy">
+                <div class="gallery-info">
+                  <h4>Our Culinary Team</h4>
+                  <p>Passionate culinary artists at work</p>
+                  <div class="gallery-links">
+                    <a href="{% static 'assets/img/restaurant/chef-3.webp' %}" class="glightbox" title="Our Culinary Team"><i class="bi bi-zoom-in"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Gallery Item -->
+          </div><!-- End Gallery Container -->
+        </div><!-- End Isotope Layout -->
+
+      </div>
+
+    </section><!-- /Gallery Section -->
+
+
+<section id="contact" class="contact section">
+  <div class="container section-title text-center mb-0" data-aos="fade-up">
+    <h2>Contact</h2>
+    <p>Reach out to us for reservations, events, or general inquiries — we are happy to assist.
+        <br>
+    <span>We are available daily to assist with bookings, event arrangements, and customer support.</span></p>
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+
+      <!-- Contact Info Centered -->
+      <div class="col-lg-8 m-auto">
+        <div class="contact-info text-center">
+          <div class="contact-card mt-0">
+            <div class="contact-details d-flex flex-wrap gap-5 mt-0 mb-1">
+              <div class="contact-item text-center m-auto">
+                <i class="bi bi-envelope fs-3 mb-3"></i>
+                  <h4>Email:</h4>
+                  <p>info@acaciaresort.co.ke</p>
+              </div>
+              <div class="contact-item my-3">
+                <i class="bi bi-telephone fs-3"></i>
+                  <h4>Phone:</h4>
+                  <p>+254746993887</p>
+              </div>
+              <div class="contact-item my-3">
+                <i class="bi bi-geo-alt fs-3"></i>
+                  <h4>Address:</h4>
+                  <p>Acacia Resort</p>
+                  <p>Wote Town, Makueni County, Kenya</p>
+              </div>
+            </div>
+            <div class="social-links d-flex justify-content-center gap-3 mt-3">
+              <a href="#"><i class="bi bi-twitter"></i></a>
+              <a href="#"><i class="bi bi-facebook"></i></a>
+              <a href="#"><i class="bi bi-instagram"></i></a>
+              <a href="#"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+  </main>
+
+<footer id="footer" class="footer light-background">
+  <div class="container">
+    <div class="row gy-5">
+
+      <!-- About / Logo -->
+      <div class="col-lg-4 text-center text-lg-start">
+        <a href="/" class="logo d-flex align-items-center justify-content-center justify-content-lg-start mb-4">
+          <span class="sitename">Acacia Resort</span>
+        </a>
+        <p>Experience fine dining, luxury stays, and memorable events at Acacia Resort.</p>
+
+        <div class="newsletter-form mt-3">
+          <h5>Stay Updated</h5>
+          <form action="#" method="post" class="php-email-form d-flex justify-content-center justify-content-lg-start">
+            <input type="email" name="email" class="form-control me-2" placeholder="Enter your email" required>
+            <button type="submit" class="btn btn-primary">
+              <i class="bi bi-send"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-lg-2 col-6 text-center text-lg-start">
+        <h4>Company</h4>
+        <ul class="list-unstyled">
+          <li><a href="#"><i class="bi bi-chevron-right"></i> About</a></li>
+          <li><a href="#"><i class="bi bi-chevron-right"></i> Careers</a></li>
+          <li><a href="#"><i class="bi bi-chevron-right"></i> Press</a></li>
+          <li><a href="#"><i class="bi bi-chevron-right"></i> Blog</a></li>
+          <li><a href="#"><i class="bi bi-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-6 text-center text-lg-start">
+        <h4>Menu</h4>
+        <ul class="list-unstyled">
+          <li><a href="#"><i class="bi bi-chevron-right"></i> Breakfast</a></li>
+          <li><a href="#"><i class="bi bi-chevron-right"></i> Lunch</a></li>
+          <li><a href="#"><i class="bi bi-chevron-right"></i> Dinner</a></li>
+          <li><a href="#"><i class="bi bi-chevron-right"></i> Drinks</a></li>
+          <li><a href="#"><i class="bi bi-chevron-right"></i> Desserts</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="col-lg-4 text-center text-lg-start">
+        <h4>Get in Touch</h4>
+        <p><i class="bi bi-geo-alt"></i> Wote Town, Makueni County, Kenya</p>
+        <p><i class="bi bi-telephone"></i> +254 712 345 678</p>
+        <p><i class="bi bi-envelope"></i> info@acaciaresort.co.ke</p>
+
+        <div class="social-links mt-2">
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-twitter"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer-bottom py-3 mt-4 text-center">
+    <div class="container">
+      <p class="mb-0">© 2025 Developed with ❤️ by <strong>CodeNest Developers (Django)</strong>. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>
