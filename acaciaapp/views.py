@@ -198,7 +198,7 @@ def book_room_view(request, room_id):
 @staff_member_required(login_url='login')
 def admin_dashboard(request):
     rooms = Room.objects.all().order_by('room_number')
-    room_bookings = RoomBooking.objects.all().order_by('-check_in')
+    room_bookings = RoomBooking.objects.filter(is_cleared=False).order_by('-check_in')
     table_reservations = Reservation.objects.all().order_by('-date', '-time')
 
     # Handle room CRUD actions
@@ -231,11 +231,19 @@ def admin_dashboard(request):
         elif 'clear_booking' in request.POST:
             booking_id = request.POST.get('booking_id')
             booking = RoomBooking.objects.get(id=booking_id)
+
+            # 1. Mark as cleared → moves to "history"
             booking.is_cleared = True
-            booking.room.is_occupied = False
-            booking.room.save()
+
+            # 2. Free the room
+            room = booking.room
+            room.is_occupied = False
+            room.save()
+
+            # 3. Save booking changes
             booking.save()
-            messages.success(request, f"Booking for {booking.customer_name} cleared.")
+
+            messages.success(request, f"Booking for {booking.customer_name} cleared successfully.")
 
     context = {
         'rooms': rooms,
@@ -285,12 +293,18 @@ def admin_customers(request):
 @staff_member_required(login_url='login')
 def clear_customer(request, booking_id):
     booking = RoomBooking.objects.get(id=booking_id)
+
     booking.is_cleared = True
-    booking.room.is_occupied = False
-    booking.room.save()
+
+    room = booking.room
+    room.is_occupied = False
+    room.save()
+
     booking.save()
-    messages.success(request, f"Booking for {booking.name} cleared successfully.")
+
+    messages.success(request, f"Booking for {booking.customer_name} cleared successfully.")
     return redirect('admin_customers')
+
 
 def index(request):
     return render(request, 'index.html')

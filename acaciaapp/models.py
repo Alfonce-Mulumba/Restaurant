@@ -42,6 +42,7 @@ class RoomBooking(models.Model):
     check_out = models.DateField()
     message = models.TextField(blank=True, null=True)
     booked_at = models.DateTimeField(auto_now_add=True)
+    is_cleared = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.customer_name} - Room {self.room.room_number}"
