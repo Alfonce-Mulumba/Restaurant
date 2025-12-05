@@ -13,4 +13,4 @@ class RoomBookingAdmin(admin.ModelAdmin):
 
 @admin.register(Reservation)
 class ReservationAdmin(admin.ModelAdmin):
-    list_display = ('name', 'people', 'date', 'time', 'user')
+    list_display = ('reserved_name', 'people', 'date', 'time', 'user')

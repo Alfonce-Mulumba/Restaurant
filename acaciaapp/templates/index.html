@@ -7,6 +7,91 @@
   <title>HomePage - Acacia</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
+    <style>
+        /* ---------- SUCCESS TOAST (same as register) ---------- */
+.toast {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background: transparent;
+  padding: 15px 20px;
+  border-radius: 60px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast.hidden {
+  display: none;
+}
+
+.toast-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Animated Checkmark */
+.checkmark-container {
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+
+.checkmark-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px solid #22c55e; /* green */
+  animation: circleAnimation 0.6s ease forwards;
+}
+
+@keyframes circleAnimation {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.checkmark-stem {
+  position: absolute;
+  width: 3px;
+  height: 10px;
+  background: #22c55e;
+  left: 11px;
+  top: 6px;
+  transform-origin: bottom;
+  transform: rotate(45deg) scaleY(0);
+  animation: stemAnimation 0.4s ease 0.4s forwards;
+}
+
+.checkmark-kick {
+  position: absolute;
+  width: 3px;
+  height: 6px;
+  background: #22c55e;
+  left: 6px;
+  top: 12px;
+  transform-origin: top;
+  transform: rotate(-45deg) scaleY(0);
+  animation: kickAnimation 0.4s ease 0.5s forwards;
+}
+
+@keyframes stemAnimation {
+  to { transform: rotate(45deg) scaleY(1); }
+}
+
+@keyframes kickAnimation {
+  to { transform: rotate(-45deg) scaleY(1); }
+}
+    </style>
 
   {% load static %}
 
@@ -28,25 +113,35 @@
 
 </head>
 
-<body class="index-page m-2">
+<body class="index-page">
 
-<header id="header" class="header d-flex align-items-center sticky-top ms-0">
-  <div class="container position-relative d-flex align-items-center justify-content-between">
+<header id="header" class="header d-flex sticky-top">
+  <div class="container position-relative align-items-center justify-content-between d-flex m-auto gap-4">
 
-    <a href="#gallery" class="logo d-flex align-items-center me-auto me-xl-0">
-                <img src="{% static 'assets/img/img.png' %}" alt="" class="img ms-0 border-0 rounded-circle h-100">
+    <a href="#gallery" class="logo d-flex align-items-center me-auto">
+        <img src="{% static 'assets/img/img.png' %}" alt="" class="img m-auto border-0 rounded-circle h-100">
 
       <h1 class="sitename"><strong>Acacia</strong><span class="text-primary"> Resort</span></h1>
     </a>
 
   <nav id="navmenu" class="navmenu">
-  <ul class="d-flex align-items-center gap-3 list-unstyled mb-0">
+  <ul class="d-flex gap-3 list-unstyled align-items-center mb-0">
+  {% if user.is_superuser %}
     <li><a href="/">Home</a></li>
     <li><a href="/menu/">Menu</a></li>
     <li><a href="/events/">Events</a></li>
     <li><a href="/rooms/">Rooms</a></li>
     <li><a href="/about/">About</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="/dashboard/">Admin</a></li>
+  {% else %}
+    <li><a href="/">Home</a></li>
+    <li><a href="/menu/">Menu</a></li>
+    <li><a href="/events/">Events</a></li>
+    <li><a href="/rooms/">Rooms</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  {% endif %}
 <li class="dropdown">
     <a href="#"><span>More</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
@@ -72,7 +167,42 @@
 
   </div>
 </header>
+ <!-- SUCCESS TOAST (Django Messages) -->
+    {% if messages %}
+    <div id="toast" class="toast hidden">
+      <div class="toast-content">
+        <div class="checkmark-container">
+          <div class="checkmark-circle"></div>
+          <div class="checkmark-stem"></div>
+          <div class="checkmark-kick"></div>
+        </div>
+        <span id="toast-message">
+          {% for message in messages %}
+            {{ message }}
+          {% endfor %}
+        </span>
+      </div>
+    </div>
 
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const toast = document.getElementById("toast");
+
+        // Show toast
+        toast.classList.remove("hidden");
+        setTimeout(() => toast.classList.add("show"), 20);
+
+        // Hide automatically
+        setTimeout(() => {
+          toast.classList.remove("show");
+          setTimeout(() => toast.classList.add("hidden"), 400);
+        }, 3800);
+
+
+      });
+    </script>
+    {% endif %}
+    <!-- END TOAST -->
 
   <main class="main">
 
@@ -292,15 +422,15 @@
   </div>
 
   <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-1">
 
       <!-- Contact Info Centered -->
       <div class="col-lg-8 m-auto">
         <div class="contact-info text-center">
-          <div class="contact-card mt-0">
-            <div class="contact-details d-flex flex-wrap gap-5 mt-0 mb-1">
-              <div class="contact-item text-center m-auto">
-                <i class="bi bi-envelope fs-3 mb-3"></i>
+          <div class="contact-card justify-content-center mt-0">
+            <div class="contact-details justify-content-center d-flex flex-wrap gap-5">
+              <div class="contact-item my-3">
+                <i class="bi bi-envelope fs-3"></i>
                   <h4>Email:</h4>
                   <p>info@acaciaresort.co.ke</p>
               </div>

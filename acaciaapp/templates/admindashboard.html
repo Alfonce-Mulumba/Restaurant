@@ -3,16 +3,34 @@
 
 {% block content %}
 <div class="container my-5">
-    <h1>Admin Dashboard</h1>
+    <h1 class="text-center mb-2"><strong>Admin Dashboard</strong></h1>
 
     <!-- Display success/error messages -->
     {% if messages %}
-        {% for message in messages %}
-            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endif %}
+<div class="message-container"> {# Optional: Wrap messages in a container for easier targeting #}
+    {% for message in messages %}
+    <div class="text-center d-block m-auto w-50 border-0 rounded-5 alert {% if message.tags %}alert-{{ message.tags }}{% endif %} message-fade-out">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const messageElements = document.querySelectorAll('.message-fade-out');
+
+        messageElements.forEach(function(message) {
+            setTimeout(function() {
+                message.style.opacity = '0'; // Start fade out
+                message.style.transition = 'opacity 1s ease-out'; // Add transition for smooth fade
+                setTimeout(function() {
+                    message.remove(); // Remove element after fade out
+                }, 1000); // Match this with the transition duration
+            }, 2000); // 3000 milliseconds = 3 seconds
+        });
+    });
+</script>
 
     <!-- Tabs -->
     <ul class="nav nav-tabs mb-4" id="adminTabs" role="tablist">
@@ -30,21 +48,21 @@
     <div class="tab-content" id="adminTabContent">
       <!-- Rooms Tab -->
       <div class="tab-pane fade show active" id="rooms" role="tabpanel">
-          <h3>Add Room</h3>
+          <h3 class="text-center">Add Room</h3>
           <form method="POST" enctype="multipart/form-data">
               {% csrf_token %}
               <input type="hidden" name="create_room">
               <div class="row">
-                  <div class="col-md-2"><input class="form-control mb-2" name="room_number" placeholder="Room #" required></div>
-                  <div class="col-md-2"><input class="form-control mb-2" name="capacity" placeholder="Capacity" type="number" required></div>
-                  <div class="col-md-2"><input class="form-control mb-2" name="price" placeholder="Price (KES)" type="number" step="0.01" required></div>
-                  <div class="col-md-4"><input class="form-control mb-2" name="description" placeholder="Description" required></div>
-                  <div class="col-md-2"><input class="form-control mb-2" name="image" type="file" required></div>
+                  <div class="col-md-2"><input class="form-control mb-2 border-1 rounded-4" name="room_number" placeholder="Room #" required></div>
+                  <div class="col-md-2"><input class="form-control mb-2 border-1 rounded-4" name="capacity" placeholder="Capacity" type="number" required></div>
+                  <div class="col-md-2"><input class="form-control mb-2 border-1 rounded-4" name="price" placeholder="Price (KES)" type="number" step="0.01" required></div>
+                  <div class="col-md-4"><input class="form-control mb-2 border-1 rounded-4" name="description" placeholder="Description" required></div>
+                  <div class="col-md-2"><input class="form-control mb-2 border-1 rounded-4" name="image" type="file" required></div>
               </div>
-              <button class="btn btn-success mb-4" type="submit">Add Room</button>
+              <button class="btn btn-outline-primary mb-4 border-2 rounded-5" type="submit">Add Room</button>
           </form>
 
-          <h3>All Rooms</h3>
+          <h3 class="text-center"><strong><u>All Rooms</u></strong></h3>
           <table class="table table-striped">
               <thead>
                   <tr>
@@ -69,7 +87,7 @@
                               {% csrf_token %}
                               <input type="hidden" name="toggle_room" value="1">
                               <input type="hidden" name="room_id" value="{{ room.id }}">
-                              <button class="btn btn-warning btn-sm" type="submit">
+                              <button class="btn btn-danger btn-sm border-0 rounded-5" type="submit">
                                   {% if room.is_occupied %}Mark Vacant{% else %}Mark Occupied{% endif %}
                               </button>
                           </form>
@@ -82,12 +100,13 @@
 
       <!-- Room Bookings Tab -->
       <div class="tab-pane fade" id="bookings" role="tabpanel">
-          <h3>Room Bookings</h3>
+          <h3 class="text-center">Room Bookings</h3>
           <table class="table table-striped">
               <thead>
                   <tr>
-                      <th>Name</th>
+
                       <th>Room #</th>
+                      <th>Name</th>
                       <th>Check-In</th>
                       <th>Check-Out</th>
                       <th>Cleared</th>
@@ -97,8 +116,9 @@
               <tbody>
                   {% for booking in room_bookings %}
                   <tr>
-                      <td>{{ booking.name }}</td>
+
                       <td>{{ booking.room.room_number }}</td>
+                      <td>{{ booking.customer_name }}</td>
                       <td>{{ booking.check_in }}</td>
                       <td>{{ booking.check_out }}</td>
                       <td>{{ booking.is_cleared|yesno:"Yes,No" }}</td>
@@ -120,7 +140,7 @@
 
       <!-- Table Reservations Tab -->
       <div class="tab-pane fade" id="reservations" role="tabpanel">
-          <h3>Table Reservations</h3>
+          <h3 class="text-center">Table Reservations</h3>
           <table class="table table-striped">
               <thead>
                   <tr>
@@ -134,7 +154,7 @@
               <tbody>
                   {% for res in table_reservations %}
                   <tr>
-                      <td>{{ res.name }}</td>
+                      <td>{{ res.reserved_name }}</td>
                       <td>{{ res.people }}</td>
                       <td>{{ res.date }}</td>
                       <td>{{ res.time }}</td>

@@ -45,7 +45,7 @@ def login_view(request):
             if next_url:
                 return redirect(next_url)
 
-            return redirect("index")
+            return redirect('/')
 
         return render(request, "login.html", {"error": "Invalid username or password"})
 
@@ -69,7 +69,7 @@ def reservations_view(request):
 
         Reservation.objects.create(
             user=request.user,
-            name=request.user.get_full_name() or request.user.username,  # 🔥 Better name
+            reserved_name=request.user.get_full_name() or request.user.username,  # 🔥 Better name
             email=request.user.email,
             phone=phone,
             people=people,
@@ -226,7 +226,7 @@ def admin_dashboard(request):
             booking.room.is_occupied = False
             booking.room.save()
             booking.save()
-            messages.success(request, f"Booking for {booking.name} cleared.")
+            messages.success(request, f"Booking for {booking.customer_name} cleared.")
 
     context = {
         'rooms': rooms,

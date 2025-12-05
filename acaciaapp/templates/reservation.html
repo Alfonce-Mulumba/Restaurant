@@ -6,10 +6,7 @@
 
 {% block content %}
 
-     {% for message in messages %}
-        <p class="alert alert-success w-100 text-center m-auto">{{ message }}</p>
 
-    {% endfor %}
     <!-- Book A Table Section -->
     <section id="book-a-table" class="book-a-table section">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -27,7 +24,7 @@
                 {% csrf_token %}
                 <div class="row g-3">
                   <div class="col-12 form-group">
-                    <label for="name">Full Name</label>
+                    <label for="reserved_name">Full Name</label>
                     <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" required="">
                   </div>
                   <div class="col-12 form-group">

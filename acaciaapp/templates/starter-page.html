@@ -39,14 +39,14 @@
 
 <body class="starter-page-page">
 
-  <header id="header" class="header d-flex align-items-center sticky-top">
-    <div class="container position-relative d-flex align-items-center justify-content-between">
+  <header id="header" class="header d-flex sticky-top">
+  <div class="container position-relative align-items-center justify-content-between d-flex m-auto gap-4">
 
-      <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- Uncomment below to use image logo -->
-                <img src="{% static 'assets/img/img.png' %}" alt="" class="img border-0 rounded-circle h-100">
+    <a href="#gallery" class="logo d-flex align-items-center me-auto me-xl-0">
+                <img src="{% static 'assets/img/img.png' %}" alt="" class="img ms-0 border-0 rounded-circle h-100">
+
       <h1 class="sitename"><strong>Acacia</strong><span class="text-primary"> Resort</span></h1>
-      </a>
+    </a>
         <nav id="navmenu" class="navmenu">
   <ul class="d-flex align-items-center gap-3 list-unstyled mb-0">
     <li><a href="/">Home</a></li>
@@ -84,139 +84,75 @@
       {% endblock %}
   </main>
 
-  <footer id="footer" class="footer light-background">
+<footer id="footer" class="footer light-background">
+  <div class="container">
+    <div class="row gy-5">
 
+      <!-- About / Logo -->
+      <div class="col-lg-4 text-center text-lg-start">
+        <a href="/" class="logo d-flex align-items-center justify-content-center justify-content-lg-start mb-4">
+          <span class="sitename">Acacia Resort</span>
+        </a>
+        <p>Experience fine dining, luxury stays, and memorable events at Acacia Resort.</p>
+
+        <div class="newsletter-form mt-3">
+          <h5>Stay Updated</h5>
+          <form action="#" method="post" class="php-email-form d-flex justify-content-center justify-content-lg-start">
+            <input type="email" name="email" class="form-control me-2" placeholder="Enter your email" required>
+            <button type="submit" class="btn btn-primary">
+              <i class="bi bi-send"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-lg-2 col-6 text-center text-lg-start">
+        <h4>Company</h4>
+        <ul class="list-unstyled">
+          <li><a href="#"><i class="bi bi-chevron-right"></i> About</a></li>
+          <li><a href="#"><i class="bi bi-chevron-right"></i> Careers</a></li>
+          <li><a href="#"><i class="bi bi-chevron-right"></i> Press</a></li>
+          <li><a href="#"><i class="bi bi-chevron-right"></i> Blog</a></li>
+          <li><a href="#"><i class="bi bi-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-6 text-center text-lg-start">
+        <h4>Menu</h4>
+        <ul class="list-unstyled">
+          <li><a href="#"><i class="bi bi-chevron-right"></i> Breakfast</a></li>
+          <li><a href="#"><i class="bi bi-chevron-right"></i> Lunch</a></li>
+          <li><a href="#"><i class="bi bi-chevron-right"></i> Dinner</a></li>
+          <li><a href="#"><i class="bi bi-chevron-right"></i> Drinks</a></li>
+          <li><a href="#"><i class="bi bi-chevron-right"></i> Desserts</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="col-lg-4 text-center text-lg-start">
+        <h4>Get in Touch</h4>
+        <p><i class="bi bi-geo-alt"></i> Wote Town, Makueni County, Kenya</p>
+        <p><i class="bi bi-telephone"></i> +254 712 345 678</p>
+        <p><i class="bi bi-envelope"></i> info@acaciaresort.co.ke</p>
+
+        <div class="social-links mt-2">
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-twitter"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer-bottom py-3 mt-4 text-center">
     <div class="container">
-      <div class="row gy-5">
-
-        <!-- Footer Column 1 -->
-        <div class="col-lg-4">
-          <div class="footer-content">
-            <a href="/" class="logo d-flex align-items-center mb-4">
-              <span class="sitename">Acacia Resort</span>
-            </a>
-            <p class="mb-4">
-              A serene getaway offering luxury dining, relaxation, and unforgettable experiences in the heart of Kenya.
-            </p>
-
-            <div class="newsletter-form">
-              <h5>Stay Updated</h5>
-              <form action="forms/newsletter.php" method="post" class="php-email-form">
-                <div class="input-group">
-                  <input type="email" name="email" class="form-control" placeholder="Enter your email" required="">
-                  <button type="submit" class="btn-subscribe">
-                    <i class="bi bi-send"></i>
-                  </button>
-                </div>
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Thank you for subscribing!</div>
-              </form>
-            </div>
-          </div>
-        </div>
-
-        <!-- Footer Column 2 -->
-        <div class="col-lg-2 col-6">
-          <div class="footer-links">
-            <h4>Explore</h4>
-            <ul>
-              <li><a href="/about/"><i class="bi bi-chevron-right"></i> About Us</a></li>
-              <li><a href="/menu/"><i class="bi bi-chevron-right"></i> Dining</a></li>
-              <li><a href="/events/"><i class="bi bi-chevron-right"></i> Events</a></li>
-              <li><a href="/chefs/"><i class="bi bi-chevron-right"></i> Our Chefs</a></li>
-              <li><a href="/contact/"><i class="bi bi-chevron-right"></i> Contact</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Footer Column 3 -->
-        <div class="col-lg-2 col-6">
-          <div class="footer-links">
-            <h4>Services</h4>
-            <ul>
-              <li><a href="#"><i class="bi bi-chevron-right"></i> Fine Dining</a></li>
-              <li><a href="#"><i class="bi bi-chevron-right"></i> Accommodation</a></li>
-              <li><a href="#"><i class="bi bi-chevron-right"></i> Event Hosting</a></li>
-              <li><a href="#"><i class="bi bi-chevron-right"></i> Outdoor Experiences</a></li>
-              <li><a href="#"><i class="bi bi-chevron-right"></i> Reservations</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Footer Column 4 -->
-        <div class="col-lg-4">
-          <div class="footer-contact">
-            <h4>Get in Touch</h4>
-
-            <div class="contact-item">
-              <div class="contact-icon">
-                <i class="bi bi-geo-alt"></i>
-              </div>
-              <div class="contact-info">
-                <p>Acacia Resort<br>Nakuru County, Kenya</p>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <div class="contact-icon">
-                <i class="bi bi-telephone"></i>
-              </div>
-              <div class="contact-info">
-                <p>+254 712 345 678</p>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <div class="contact-icon">
-                <i class="bi bi-envelope"></i>
-              </div>
-              <div class="contact-info">
-                <p>info@acaciaresort.co.ke</p>
-              </div>
-            </div>
-
-            <div class="social-links">
-              <a href="#"><i class="bi bi-facebook"></i></a>
-              <a href="#"><i class="bi bi-instagram"></i></a>
-              <a href="#"><i class="bi bi-twitter-x"></i></a>
-              <a href="#"><i class="bi bi-youtube"></i></a>
-            </div>
-          </div>
-        </div>
-
-      </div>
+      <p class="mb-0">© 2025 Developed with ❤️ by <strong>CodeNest Developers (Django)</strong>. All Rights Reserved.</p>
     </div>
-
-    <div class="footer-bottom">
-      <div class="container">
-        <div class="row align-items-center">
-
-          <div class="col-lg-6">
-            <div class="copyright">
-              <p>© <span>Copyright</span>
-                <strong class="px-1 sitename">Acacia Resort</strong>
-                <span>All Rights Reserved</span>
-              </p>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="footer-bottom-links">
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms of Service</a>
-              <a href="#">Cookie Policy</a>
-            </div>
-            <div class="credits">
-              Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-  </footer>
+  </div>
+</footer>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">

@@ -2,39 +2,39 @@
 {% block title %}Available Rooms{% endblock %}
 {% block content %}
 <div class="container mt-5">
-    <h2>Available Rooms</h2>
+    <h2 class="text-center"><strong>Available Rooms</strong></h2>
 
     <!-- Search Form -->
-    <form method="get" class="row g-3 mb-4">
+    <form method="get" class="d-flex m-auto w-100 justify-content-center row g-3 mb-3">
         <div class="col-md-3">
             <label for="check_in" class="form-label">Check-in Date</label>
-            <input type="date" class="form-control" name="check_in" value="{{ check_in }}">
+            <input type="date" class="form-control border-1 rounded-4" name="check_in" value="{{ check_in }}">
         </div>
         <div class="col-md-3">
             <label for="check_out" class="form-label">Check-out Date</label>
-            <input type="date" class="form-control" name="check_out" value="{{ check_out }}">
+            <input type="date" class="form-control border-1 rounded-4" name="check_out" value="{{ check_out }}">
         </div>
         <div class="col-md-2 align-self-end">
-            <button type="submit" class="btn btn-primary w-100">Search</button>
+            <button type="submit" class="btn btn-primary w-100 border-0 rounded-5">Search</button>
         </div>
     </form>
 
-    <div class="row g-4 mt-3">
+    <div class="row g-4 my-3">
         {% for room in rooms %}
         <div class="col-md-4">
-            <div class="card h-100">
-                <img src="{{ room.image.url }}" class="card-img-top" alt="Room {{ room.room_number }}">
+            <div class="card h-100 w-auto justify-content-center mb-2 border-1 rounded-4">
+                <img src="{{ room.image.url }}" class="card-img-top h-50 border-1 rounded-3" alt="Room {{ room.room_number }}">
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Room {{ room.room_number }}</h5>
+                    <h5 class="card-title"><strong>ROOM No.</strong> {{ room.room_number }}</h5>
                     <p class="card-text"><strong>Capacity:</strong> {{ room.capacity }} people</p>
                     <p class="card-text"><strong>Features:</strong> {{ room.description }}</p>
                     <p class="card-text"><strong>Price:</strong> KES {{ room.price }}</p>
-                    <a href="{% url 'book_room' room.id %}" class="btn btn-success mt-auto">Book Room</a>
+                    <a href="{% url 'book_room' room.id %}" class="btn btn-primary d-block m-auto mb-1 w-50 border-0 rounded-5">Book Room</a>
                 </div>
             </div>
         </div>
         {% empty %}
-        <p>No rooms available for the selected dates.</p>
+        <p class="text-center">No rooms available for the selected dates.</p>
         {% endfor %}
     </div>
 </div>
